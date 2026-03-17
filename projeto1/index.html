@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Ngrok Teste 1 - Contador</title>
+</head>
+<body>
+    <h1>Contador de Cliques Remoto</h1>
+    <p>Ao clicar no botão, meu CMD em casa vai avisar!</p>
+    <button onclick="enviarClique()" style="padding: 20px; cursor: pointer;">CLICAR!</button>
+
+    <script>
+        const NGROK_URL = "https://rudy-unabrogated-rolf.ngrok-free.dev";
+
+        function enviarClique() {
+            fetch(`${NGROK_URL}/clique`, {
+                headers: { 'ngrok-skip-browser-warning': 'true' }
+            })
+            .then(() => alert("Clique enviado pro meu terminal!"))
+            .catch(err => console.error("Erro ao conectar:", err));
+        }
+    </script>
+</body>
+</html>
